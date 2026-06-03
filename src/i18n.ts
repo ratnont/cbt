@@ -70,6 +70,23 @@ export const strings = {
     loading: 'กำลังโหลด...',
     syncError: 'เกิดข้อผิดพลาดในการซิงค์ กรุณาลองใหม่',
 
+    // Share link
+    shareTitle: 'แชร์ให้นักบำบัด',
+    shareDesc: 'สร้างลิงก์อ่านอย่างเดียวที่หมดอายุใน 7 วัน',
+    shareGenerate: 'สร้างลิงก์แชร์',
+    shareCopy: 'คัดลอกลิงก์',
+    shareCopied: 'คัดลอกแล้ว ✓',
+    shareRevoke: 'ยกเลิกลิงก์',
+    shareRevokeConfirm: 'ยืนยันการยกเลิกลิงก์? ผู้ที่มีลิงก์เก่าจะเข้าไม่ได้อีก',
+    shareExpires: (date: string) => `หมดอายุ ${date}`,
+    shareExpired: 'ลิงก์หมดอายุแล้ว',
+    shareWarning: 'ผู้ที่มีลิงก์นี้สามารถดูบันทึกทั้งหมดของคุณได้ ใช้ด้วยความระมัดระวัง',
+    shareViewTitle: 'บันทึกความคิด',
+    shareViewBy: (email: string) => `แชร์โดย ${email}`,
+    shareViewExpires: (date: string) => `ลิงก์หมดอายุ ${date}`,
+    shareInvalid: 'ลิงก์ไม่ถูกต้องหรือหมดอายุแล้ว',
+    shareEmpty: 'ยังไม่มีบันทึก',
+
     // Google Sheets push
     settings: 'ตั้งค่า',
     sheetsUrl: 'Google Apps Script URL',
@@ -170,6 +187,23 @@ export const strings = {
     migrateSuccess: 'Records imported successfully',
     loading: 'Loading…',
     syncError: 'Sync error — please try again',
+
+    // Share link
+    shareTitle: 'Share with therapist',
+    shareDesc: 'Create a read-only link that expires in 7 days',
+    shareGenerate: 'Generate share link',
+    shareCopy: 'Copy link',
+    shareCopied: 'Copied ✓',
+    shareRevoke: 'Revoke link',
+    shareRevokeConfirm: 'Revoke this link? Anyone with the old link will lose access.',
+    shareExpires: (date: string) => `Expires ${date}`,
+    shareExpired: 'Link expired',
+    shareWarning: 'Anyone with this link can view all your records. Share carefully.',
+    shareViewTitle: 'Thought Record',
+    shareViewBy: (email: string) => `Shared by ${email}`,
+    shareViewExpires: (date: string) => `Link expires ${date}`,
+    shareInvalid: 'This link is invalid or has expired.',
+    shareEmpty: 'No entries yet',
 
     // Google Sheets push
     settings: 'Settings',

@@ -7,6 +7,7 @@ interface Props {
   onEdit: (entry: Entry) => void
   onDelete: (id: string) => void
   t: Strings
+  readOnly?: boolean
 }
 
 function formatDatetime(iso: string, lang: Lang) {
@@ -27,7 +28,7 @@ function ColHeader({ text }: { text: string }) {
   )
 }
 
-export function EntryTable({ entries, lang, onEdit, onDelete, t }: Props) {
+export function EntryTable({ entries, lang, onEdit, onDelete, t, readOnly = false }: Props) {
   return (
     <div className="overflow-x-auto rounded-2xl border border-stone-200 shadow-sm bg-white">
       <table className="w-full text-sm border-collapse min-w-[700px]">
@@ -51,8 +52,7 @@ export function EntryTable({ entries, lang, onEdit, onDelete, t }: Props) {
             <th className="px-3 py-3 text-left text-xs text-stone-600 font-medium border-r border-stone-200 align-top">
               <ColHeader text={t.colBehaviors} />
             </th>
-            {/* Actions column — no header text */}
-            <th className="px-2 py-3 w-16" />
+            {!readOnly && <th className="px-2 py-3 w-16" />}
           </tr>
         </thead>
         <tbody>
@@ -87,22 +87,14 @@ export function EntryTable({ entries, lang, onEdit, onDelete, t }: Props) {
               <td className="px-3 py-3 border-r border-stone-100 text-stone-700 leading-relaxed">
                 {entry.behaviors || <span className="text-stone-300">—</span>}
               </td>
-              <td className="px-2 py-3 whitespace-nowrap">
-                <div className="flex flex-col gap-1">
-                  <button
-                    onClick={() => onEdit(entry)}
-                    className="text-xs text-teal-600 hover:text-teal-700 font-medium px-1.5 py-1 rounded hover:bg-teal-50 transition-colors"
-                  >
-                    ✏️
-                  </button>
-                  <button
-                    onClick={() => onDelete(entry.id)}
-                    className="text-xs text-stone-300 hover:text-rose-500 font-medium px-1.5 py-1 rounded hover:bg-rose-50 transition-colors"
-                  >
-                    🗑
-                  </button>
-                </div>
-              </td>
+              {!readOnly && (
+                <td className="px-2 py-3 whitespace-nowrap">
+                  <div className="flex flex-col gap-1">
+                    <button onClick={() => onEdit(entry)} className="text-xs text-teal-600 hover:text-teal-700 font-medium px-1.5 py-1 rounded hover:bg-teal-50 transition-colors">✏️</button>
+                    <button onClick={() => onDelete(entry.id)} className="text-xs text-stone-300 hover:text-rose-500 font-medium px-1.5 py-1 rounded hover:bg-rose-50 transition-colors">🗑</button>
+                  </div>
+                </td>
+              )}
             </tr>
           ))}
         </tbody>

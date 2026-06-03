@@ -5,6 +5,8 @@ import { supabase, rowToEntry, entryToRow } from './lib/supabase'
 import { useLocalStorage } from './hooks/useLocalStorage'
 import { strings, type Lang } from './i18n'
 import { LoginScreen } from './components/LoginScreen'
+import { ShareView } from './components/ShareView'
+import { SharePanel } from './components/SharePanel'
 import { EntryCard } from './components/EntryCard'
 import { EntryTable } from './components/EntryTable'
 import { EntryForm } from './components/EntryForm'
@@ -14,6 +16,9 @@ import { exportCSV, exportJSON, importJSON } from './export'
 type View = 'list' | 'form' | 'settings'
 
 export function App() {
+  // Share view — no auth needed
+  const shareToken = new URLSearchParams(window.location.search).get('share')
+
   // UI prefs — still in localStorage (device-level)
   const [lang, setLang] = useLocalStorage<Lang>('cbt-lang', 'th')
   const [listLayout, setListLayout] = useLocalStorage<'cards' | 'table'>('cbt-layout', 'cards')
@@ -195,6 +200,11 @@ export function App() {
     setView('list')
   }
 
+  // --- Share gate (no auth needed) ---
+  if (shareToken) {
+    return <ShareView token={shareToken} lang={lang} t={t} />
+  }
+
   // --- Auth gate ---
   if (!authReady) {
     return (
@@ -298,6 +308,9 @@ export function App() {
               <input type="url" value={settingsUrl} onChange={e => setSettingsUrl(e.target.value)} placeholder="https://script.google.com/macros/s/..." className="w-full rounded-lg border border-stone-200 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-teal-400" />
             </div>
             <button onClick={() => { setSheetsUrl(settingsUrl); setView('list') }} className="w-full py-2.5 rounded-xl bg-teal-600 text-white text-sm font-medium hover:bg-teal-700 transition-colors">{t.save_settings}</button>
+            <div className="border-t border-stone-100 pt-4">
+              <SharePanel userId={user.id} t={t} />
+            </div>
             <div className="border-t border-stone-100 pt-3">
               <button onClick={signOut} className="w-full py-2.5 rounded-xl bg-stone-100 text-stone-600 text-sm font-medium hover:bg-stone-200 transition-colors">{t.signOut}</button>
             </div>
