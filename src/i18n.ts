@@ -57,6 +57,19 @@ export const strings = {
     importSuccess: 'นำเข้าข้อมูลสำเร็จ',
     importError: 'ไฟล์ไม่ถูกต้อง กรุณาใช้ไฟล์สำรองข้อมูล JSON ของแอปนี้',
 
+    // Auth
+    loginPrompt: 'ลงชื่อเข้าใช้เพื่อซิงค์บันทึกของคุณข้ามอุปกรณ์',
+    signInWithGoogle: 'เข้าสู่ระบบด้วย Google',
+    signingIn: 'กำลังเข้าสู่ระบบ...',
+    loginPrivacy: 'บันทึกของคุณจะถูกเก็บในฐานข้อมูลส่วนตัวของคุณเท่านั้น',
+    signOut: 'ออกจากระบบ',
+    migratePrompt: 'พบข้อมูลเก่าในเบราว์เซอร์นี้ ต้องการนำเข้าไปยังบัญชีของคุณหรือไม่?',
+    migrateYes: 'นำเข้าข้อมูลเก่า',
+    migrateNo: 'ไม่ต้องการ',
+    migrateSuccess: 'นำเข้าข้อมูลสำเร็จ',
+    loading: 'กำลังโหลด...',
+    syncError: 'เกิดข้อผิดพลาดในการซิงค์ กรุณาลองใหม่',
+
     // Google Sheets push
     settings: 'ตั้งค่า',
     sheetsUrl: 'Google Apps Script URL',
@@ -144,6 +157,19 @@ export const strings = {
     importJSONConfirm: 'This will replace all current data. Continue?',
     importSuccess: 'Data imported successfully',
     importError: 'Invalid file. Please use a JSON backup from this app.',
+
+    // Auth
+    loginPrompt: 'Sign in to sync your records across devices',
+    signInWithGoogle: 'Sign in with Google',
+    signingIn: 'Signing in…',
+    loginPrivacy: 'Your records are stored in your private account only.',
+    signOut: 'Sign out',
+    migratePrompt: 'Found existing records in this browser. Import them into your account?',
+    migrateYes: 'Import existing records',
+    migrateNo: 'Skip',
+    migrateSuccess: 'Records imported successfully',
+    loading: 'Loading…',
+    syncError: 'Sync error — please try again',
 
     // Google Sheets push
     settings: 'Settings',

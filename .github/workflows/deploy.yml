@@ -29,10 +29,11 @@ jobs:
 
       - run: npm ci
 
-      # Replace YOUR_REPO_NAME below with your actual GitHub repository name.
       - run: npm run build
         env:
           BASE_URL: /cbt/
+          VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
+          VITE_SUPABASE_ANON_KEY: ${{ secrets.VITE_SUPABASE_ANON_KEY }}
 
       - uses: actions/configure-pages@v4
 
