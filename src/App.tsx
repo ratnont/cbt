@@ -3,6 +3,7 @@ import type { Entry } from './types'
 import { useLocalStorage } from './hooks/useLocalStorage'
 import { strings, type Lang } from './i18n'
 import { EntryCard } from './components/EntryCard'
+import { EntryTable } from './components/EntryTable'
 import { EntryForm } from './components/EntryForm'
 import { ConfirmDialog } from './components/ConfirmDialog'
 import { exportCSV, exportJSON, importJSON } from './export'
@@ -20,6 +21,7 @@ export function App() {
   const [filterEmotion, setFilterEmotion] = useState('')
   const [filterFrom, setFilterFrom] = useState('')
   const [filterTo, setFilterTo] = useState('')
+  const [listLayout, setListLayout] = useLocalStorage<'cards' | 'table'>('cbt-layout', 'cards')
   const [exportMenuOpen, setExportMenuOpen] = useState(false)
   const [pushStatus, setPushStatus] = useState<'idle' | 'sent'>('idle')
   const [settingsUrl, setSettingsUrl] = useState(sheetsUrl)
@@ -206,7 +208,7 @@ export function App() {
       )}
 
       {/* Main content */}
-      <main className="flex-1 px-4 py-4 max-w-2xl mx-auto w-full">
+      <main className={`flex-1 px-4 py-4 mx-auto w-full ${view === 'list' && listLayout === 'table' ? 'max-w-6xl' : 'max-w-2xl'}`}>
 
         {/* Settings panel */}
         {view === 'settings' && (
@@ -293,9 +295,25 @@ export function App() {
               </div>
             </div>
 
-            {/* Count */}
+            {/* Count + layout toggle */}
             {entries.length > 0 && (
-              <p className="text-xs text-stone-400">{t.entriesCount(filtered.length)}</p>
+              <div className="flex items-center justify-between">
+                <p className="text-xs text-stone-400">{t.entriesCount(filtered.length)}</p>
+                <div className="flex rounded-lg border border-stone-200 overflow-hidden text-xs font-medium">
+                  <button
+                    onClick={() => setListLayout('cards')}
+                    className={`px-3 py-1.5 transition-colors ${listLayout === 'cards' ? 'bg-teal-600 text-white' : 'bg-white text-stone-500 hover:bg-stone-50'}`}
+                  >
+                    {t.viewCards}
+                  </button>
+                  <button
+                    onClick={() => setListLayout('table')}
+                    className={`px-3 py-1.5 transition-colors border-l border-stone-200 ${listLayout === 'table' ? 'bg-teal-600 text-white' : 'bg-white text-stone-500 hover:bg-stone-50'}`}
+                  >
+                    {t.viewTable}
+                  </button>
+                </div>
+              </div>
             )}
 
             {/* Empty states */}
@@ -315,8 +333,8 @@ export function App() {
               </div>
             )}
 
-            {/* Entry cards */}
-            {filtered.map(entry => (
+            {/* Cards view */}
+            {listLayout === 'cards' && filtered.map(entry => (
               <EntryCard
                 key={entry.id}
                 entry={entry}
@@ -326,6 +344,17 @@ export function App() {
                 onDelete={() => setDeletingId(entry.id)}
               />
             ))}
+
+            {/* Table view */}
+            {listLayout === 'table' && filtered.length > 0 && (
+              <EntryTable
+                entries={filtered}
+                lang={lang}
+                t={t}
+                onEdit={entry => { setEditing(entry); setView('form') }}
+                onDelete={id => setDeletingId(id)}
+              />
+            )}
           </div>
         )}
       </main>

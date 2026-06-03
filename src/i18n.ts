@@ -69,6 +69,18 @@ export const strings = {
     // Privacy
     privacy: 'ข้อมูลถูกเก็บในเบราว์เซอร์นี้เท่านั้น การล้างข้อมูลเบราว์เซอร์หรือเปลี่ยนอุปกรณ์จะทำให้ข้อมูลหาย ดาวน์โหลด JSON เพื่อสำรองข้อมูล',
 
+    // View toggle
+    viewCards: 'การ์ด',
+    viewTable: 'ตาราง',
+
+    // Table column headers (match worksheet exactly)
+    colDatetime: 'วันที่ / เวลา',
+    colSituation: 'เหตุการณ์\nเกิดอะไรขึ้น ที่ไหน อยู่กับใคร',
+    colThoughts: 'ความคิด\nมีอะไรป็อปอั๊พขึ้นมาบ้าง',
+    colEmotions: 'ชื่ออารมณ์ คะแนน0–10\n(เช่น โกรธ 4/10)',
+    colPhysical: 'อาการทางกาย',
+    colBehaviors: 'พฤติกรรมที่แสดงออก',
+
     // CSV columns
     csvDatetime: 'วันที่/เวลา',
     csvSituation: 'เหตุการณ์',
@@ -144,6 +156,18 @@ export const strings = {
 
     // Privacy
     privacy: 'Data is stored only in this browser on this device. Clearing browser data or switching devices will erase it. Download a JSON backup to keep a copy.',
+
+    // View toggle
+    viewCards: 'Cards',
+    viewTable: 'Table',
+
+    // Table column headers
+    colDatetime: 'Date / Time',
+    colSituation: 'Situation\nWhat happened, where, with whom',
+    colThoughts: 'Thoughts\nWhat popped up',
+    colEmotions: 'Emotions & score 0–10\n(e.g. Angry 4/10)',
+    colPhysical: 'Physical symptoms',
+    colBehaviors: 'Behaviors',
 
     // CSV columns
     csvDatetime: 'Date/Time',
