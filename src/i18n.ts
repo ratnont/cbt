@@ -19,7 +19,7 @@ export const strings = {
     situation: 'เหตุการณ์',
     situationHint: 'เกิดอะไรขึ้น ที่ไหน อยู่กับใคร',
     thoughts: 'ความคิด',
-    thoughtsHint: 'มีอะไรป๊อปอั๊พขึ้นมาบ้าง',
+    thoughtsHint: 'มีอะไรป๊อปอัพขึ้นมาบ้าง',
     emotions: 'อารมณ์',
     emotionsHint: 'เพิ่มอารมณ์และให้คะแนน 0–10',
     addEmotion: 'เพิ่มอารมณ์',
@@ -106,7 +106,7 @@ export const strings = {
     // Table column headers (match worksheet exactly)
     colDatetime: 'วันที่ / เวลา',
     colSituation: 'เหตุการณ์\nเกิดอะไรขึ้น ที่ไหน อยู่กับใคร',
-    colThoughts: 'ความคิด\nมีอะไรป็อปอั๊พขึ้นมาบ้าง',
+    colThoughts: 'ความคิด\nมีอะไรป๊อปอัพขึ้นมาบ้าง',
     colEmotions: 'ชื่ออารมณ์ คะแนน0–10\n(เช่น โกรธ 4/10)',
     colPhysical: 'อาการทางกาย',
     colBehaviors: 'พฤติกรรมที่แสดงออก',
